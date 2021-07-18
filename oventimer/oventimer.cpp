@@ -25,6 +25,7 @@ OvenTimer::~OvenTimer()
 void OvenTimer::setDuration(int sec)
 {
     qDebug() << "setDuration: " << sec;
+    sec = qBound(0, sec, 59);
     remainTime = sec;
     update();
 
@@ -122,27 +123,14 @@ void OvenTimer::mousePressEvent(QMouseEvent *me)
     QPoint posFromOrigin = pos - origin;
 
     double atanValue;
-    if (posFromOrigin.x() == 0) {
-        if (posFromOrigin.y() < 0) {
-            atanValue = -M_PI / 2;
-
-        } else {
-            atanValue = M_PI / 2;
-        }
-    } else {
-        double tanValue = posFromOrigin.y() / (double)posFromOrigin.x();
-        atanValue = qAtan(tanValue);
-    }
+    atanValue = qAtan2(posFromOrigin.y(), posFromOrigin.x());
 
     int deg = qRadiansToDegrees(atanValue);
-    if (posFromOrigin.x() < 0) {
-        deg += 180;
-    }
-    deg %= 360;
     deg = 270 - deg;
     if (deg < 0)
         deg += 360;
+    deg %= 360;
     int time = deg / 6;
-    setDuration(time);
+    setDuration((remainTime + time) % 60);
 }
 
