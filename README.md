@@ -1,0 +1,2 @@
+# QtExercises
+My Qt Exercises
