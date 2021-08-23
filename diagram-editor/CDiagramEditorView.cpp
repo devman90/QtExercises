@@ -3,12 +3,12 @@
 #include <QtGui>
 #include <QDebug>
 
-static const bool DEBUG_DIAGRAM_EDITOR_VIEW = true;
+static const bool DEBUG_DIAGRAM_EDITOR_VIEW = false;
 
 CDiagramEditorView::CDiagramEditorView(QWidget *parent)
     : QGraphicsView(parent)
 {
-
+    setMouseTracking(true);
 }
 
 bool CDiagramEditorView::event(QEvent *event)

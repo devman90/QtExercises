@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 
-class CDiagramEditorScene;
+class IActionManager;
+class IDiagramEditorScene;
 class CDiagramEditorView;
 
 QT_BEGIN_NAMESPACE
@@ -18,10 +19,13 @@ public:
     CMainWindow(QWidget *parent = nullptr);
     ~CMainWindow();
 
+    void createLeftToolbar();
+
 private:
     Ui::CMainWindow *ui;
-    CDiagramEditorScene* m_pDiagramEditorScene;
+    IDiagramEditorScene* m_pDiagramEditorScene;
     CDiagramEditorView* m_pDiagramEditorView;
+    IActionManager* m_pActionManager;
 };
 
 #endif // CMAINWINDOW_H

@@ -5,14 +5,16 @@
 #include "IDiagramEditorScene.h"
 
 class CDiagramEditorScene
-    : public QGraphicsScene
-    , public IDiagramEditorScene
+    : public IDiagramEditorScene
 {
+    Q_OBJECT
+
 public:
     CDiagramEditorScene(QObject* parent = nullptr);
 
     void addItem(QGraphicsItem *item);
     void removeItem(QGraphicsItem *item);
+    QGraphicsItem *itemAt(const QPointF &position) const;
 
 protected:
     bool event(QEvent *event);

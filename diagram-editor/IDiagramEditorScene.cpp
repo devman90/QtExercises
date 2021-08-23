@@ -4,8 +4,9 @@
 
 static const bool DEBUG_DIAGRAM_EDITOR_SCENE = true;
 
-IDiagramEditorScene::IDiagramEditorScene()
-    : m_pEventHandler(new CEventHandler)
+IDiagramEditorScene::IDiagramEditorScene(QObject *parent)
+    : QGraphicsScene(parent)
+    , m_pEventHandler(new CEventHandler)
 {
 
 }

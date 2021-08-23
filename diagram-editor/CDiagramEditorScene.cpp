@@ -4,12 +4,12 @@
 #include <QDebug>
 #include "CEventHandler.h"
 
-static const bool DEBUG_DIAGRAM_EDITOR_SCENE = true;
+static const bool DEBUG_DIAGRAM_EDITOR_SCENE = false;
 
 CDiagramEditorScene::CDiagramEditorScene(QObject *parent)
-    : QGraphicsScene(parent)
+    : IDiagramEditorScene(parent)
 {
-
+    setSceneRect(0, 0, 1600, 900);
 }
 
 void CDiagramEditorScene::addItem(QGraphicsItem *item)
@@ -20,6 +20,11 @@ void CDiagramEditorScene::addItem(QGraphicsItem *item)
 void CDiagramEditorScene::removeItem(QGraphicsItem *item)
 {
     QGraphicsScene::removeItem(item);
+}
+
+QGraphicsItem *CDiagramEditorScene::itemAt(const QPointF &position) const
+{
+    return QGraphicsScene::itemAt(position, QTransform());
 }
 
 bool CDiagramEditorScene::event(QEvent *event)

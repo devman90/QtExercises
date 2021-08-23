@@ -1,11 +1,12 @@
-#ifndef CACTIONRECT_H
-#define CACTIONRECT_H
+#ifndef CACTIONELLIPSE_H
+#define CACTIONELLIPSE_H
+
 
 #include <QPointF>
 #include "IPreviewActionInterface.h"
 #include "IActionFactory.h"
 
-class CActionRect
+class CActionEllipse
     : public IPreviewActionInterface
 {
 public:
@@ -13,7 +14,8 @@ public:
         SetTopLeft,
         SetBottomRight
     };
-    CActionRect(IDiagramEditorScene* scene);
+
+    CActionEllipse(IDiagramEditorScene* scene);
 
     void finish();
     void trigger();
@@ -26,11 +28,11 @@ private:
     QPointF m_BottomRight;
 };
 
-class CActionRectFactory
+class CActionEllipseFactory
     : public IActionFactory
 {
 public:
-    CActionRectFactory();
+    CActionEllipseFactory();
     QString getName() const;
     IActionInterface *create(IDiagramEditorScene *scene);
 
@@ -39,4 +41,4 @@ private:
 };
 
 
-#endif // CACTIONRECT_H
+#endif // CACTIONELLIPSE_H

@@ -54,5 +54,4 @@ void IActionInterface::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 void IActionInterface::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-
 }
