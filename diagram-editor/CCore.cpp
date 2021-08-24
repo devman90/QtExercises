@@ -1,5 +1,5 @@
 #include "CCore.h"
-#include "CActionSelectSingle.h"
+#include "CActionDefault.h"
 #include "CActionRect.h"
 #include "CActionEllipse.h"
 
@@ -11,7 +11,7 @@ public:
     {}
 
     CCore* q_ptr;
-    CActionSelectSingleFactory m_actionSelectSingleFactory;
+    CActionDefaultFactory m_actionSelectSingleFactory;
     CActionRectFactory m_actionRectFactory;
     CActionEllipseFactory m_actionEllipseFactory;
 };

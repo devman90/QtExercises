@@ -22,15 +22,22 @@ void CActionRect::finish()
 void CActionRect::trigger()
 {
     IPreviewActionInterface::trigger();
-    QRectF rect(m_TopLeft, m_BottomRight);
-    rect = rect.normalized();
-    m_pScene->addItem(new QGraphicsRectItem(rect));
+    QRectF rect = QRectF(m_TopLeft, m_BottomRight).normalized();
+
+    QGraphicsRectItem* item = new QGraphicsRectItem(rect);
+    item->setFlag(QGraphicsItem::ItemIsSelectable);
+    m_pScene->addItem(item);
     setStatus(SetTopLeft);
 }
 
 void CActionRect::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-
+    if (event->button() != Qt::LeftButton)
+        return;
+    if (getStatus() == SetTopLeft) {
+        m_TopLeft = event->scenePos();
+        setStatus(SetBottomRight);
+    }
 }
 
 void CActionRect::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -47,10 +54,7 @@ void CActionRect::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event->button() != Qt::LeftButton)
         return;
-    if (getStatus() == SetTopLeft) {
-        m_TopLeft = event->scenePos();
-        setStatus(SetBottomRight);
-    } else if (getStatus() == SetBottomRight) {
+    if (getStatus() == SetBottomRight) {
         m_BottomRight = event->scenePos();
         trigger();
     }

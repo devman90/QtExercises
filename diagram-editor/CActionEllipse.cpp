@@ -21,12 +21,24 @@ void CActionEllipse::finish()
 void CActionEllipse::trigger()
 {
     IPreviewActionInterface::trigger();
-    m_pScene->addItem(new QGraphicsEllipseItem(QRectF(m_TopLeft, m_BottomRight).normalized()));
+    QRectF rect = QRectF(m_TopLeft, m_BottomRight).normalized();
+
+    QGraphicsEllipseItem* item = new QGraphicsEllipseItem(rect);
+    item->setFlag(QGraphicsItem::ItemIsSelectable);
+    m_pScene->addItem(item);
     setStatus(SetTopLeft);
 }
 
 void CActionEllipse::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+    if (event->button() != Qt::LeftButton) {
+        return;
+    }
+
+    if (getStatus() == SetTopLeft) {
+        m_TopLeft = event->scenePos();
+        setStatus(SetBottomRight);
+    }
 
 }
 
@@ -48,10 +60,7 @@ void CActionEllipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         return;
     }
 
-    if (getStatus() == SetTopLeft) {
-        m_TopLeft = event->scenePos();
-        setStatus(SetBottomRight);
-    } else if (getStatus() == SetBottomRight) {
+    if (getStatus() == SetBottomRight) {
         m_BottomRight = event->scenePos();
         trigger();
     }

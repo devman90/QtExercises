@@ -123,7 +123,7 @@ void CDiagramEditorScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         qDebug() << "\tbuttonDownScenePos(Qt::LeftButton):" << event->buttonDownScenePos(Qt::LeftButton);
     }
     m_pEventHandler->mousePressEvent(event);
-    QGraphicsScene::mousePressEvent(event);
+//    QGraphicsScene::mousePressEvent(event);
 }
 
 void CDiagramEditorScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -135,7 +135,7 @@ void CDiagramEditorScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         qDebug() << "\tbuttonDownScenePos(Qt::LeftButton):" << event->buttonDownScenePos(Qt::LeftButton);
     }
     m_pEventHandler->mouseMoveEvent(event);
-    QGraphicsScene::mouseMoveEvent(event);
+//    QGraphicsScene::mouseMoveEvent(event);
 }
 
 void CDiagramEditorScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
@@ -147,7 +147,7 @@ void CDiagramEditorScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         qDebug() << "\tbuttonDownScenePos(Qt::LeftButton):" << event->buttonDownScenePos(Qt::LeftButton);
     }
     m_pEventHandler->mouseReleaseEvent(event);
-    QGraphicsScene::mouseReleaseEvent(event);
+//    QGraphicsScene::mouseReleaseEvent(event);
 }
 
 void CDiagramEditorScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)

@@ -9,10 +9,10 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    CActionDefault.cpp \
     CActionEllipse.cpp \
     CActionManager.cpp \
     CActionRect.cpp \
-    CActionSelectSingle.cpp \
     CCore.cpp \
     CDiagramEditorScene.cpp \
     CDiagramEditorView.cpp \
@@ -28,10 +28,10 @@ SOURCES += \
     CMainWindow.cpp
 
 HEADERS += \
+    CActionDefault.h \
     CActionEllipse.h \
     CActionManager.h \
     CActionRect.h \
-    CActionSelectSingle.h \
     CCore.h \
     CDiagramEditorScene.h \
     CDiagramEditorView.h \
